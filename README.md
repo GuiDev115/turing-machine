@@ -11,7 +11,7 @@ $ make all
 ```
 $ ./tm Text_input.txt
 ```
-## Run some existing samples
+## Rodando Com algum exemplo
 ```
 $ ./tm exemplo/anbn.txt
 ```
