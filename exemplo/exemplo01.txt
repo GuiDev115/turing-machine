@@ -1,8 +1,8 @@
-BaaabbbB
-q0 B B r q1
+aaabbb
+q0 b b r q1
 q1 y y r q1
 q1 a x r q2
-q1 B B r q4
+q1 b b r q4
 q2 a a r q2
 q2 y y r q2
 q2 b y l q3
