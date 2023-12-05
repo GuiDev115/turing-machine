@@ -2,6 +2,11 @@
 
 Um simulador de Maquina de Turing Determinístico Reconhecedora de Linguagens.
 
+## Instalar o Compilador do C++
+```
+$ sudo apt update
+$ sudo apt install build-essential
+```
 ## Como Compilar
 ```
 $ cd turing-machine/
