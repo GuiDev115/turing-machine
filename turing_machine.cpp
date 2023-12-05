@@ -18,7 +18,7 @@ int TuringMachine::parseFile() {
 	ifstream ifs;
 	ifs.open(file_name, ios::in); // abrir entrada
 	if(!ifs.is_open()) {
-		cerr << "error: Can't open file\n"; 
+		cerr << "error: Não é possivel ler o arquivo\n"; 
 		return 1;
 	}
 
@@ -27,14 +27,15 @@ int TuringMachine::parseFile() {
 
 	getline(ifs,tape);	// lendo entrada
 	while(getline(ifs, line)){
-		istringstream iss(line);
-		iss >> present_state;
-		if(present_state == "accept"){
-			while(iss >> present_state)
-				accept_state.push_back(state_id.find(present_state)->second);
+		istringstream iss(line); // separar a linha em palavras
+		iss >> present_state; // ler o estado atual
+		//cout << present_state << endl; // apresentar o estado atual
+		if(present_state == "accept"){ // se o estado atual for um estado de aceitação
+			while(iss >> present_state) // ler todos os estados de aceitação
+				accept_state.push_back(state_id.find(present_state)->second); // inserir estado de aceitação na tabela de estados de aceitação
 			continue;
 		}
-		iss >> read_char >> write_char >> direction >> next_state;
+		iss >> read_char >> write_char >> direction >> next_state; // ler o carácter de entrada, carácter de escrita, direção e estado seguinte
 		if(state_id.insert(make_pair(present_state, num_states)).second) // inserir estado na tabela de estados
 			++num_states;
 		if(state_id.insert(make_pair(next_state, num_states)).second) // inserir estado na tabela de estados
@@ -75,9 +76,9 @@ void TuringMachine::makeTransitionTables(){ // preencher tabelas de transição
 		present_state_id = state_id.find(present_state)->second; 
 		next_state_id = state_id.find(next_state)->second;
 		read_char_id = alph_id.find(read_char)->second;
-		if(direction == 'l') //vai pra esquerda
+		if(direction == 'E') //vai pra esquerda
 			dir_id = -1;
-		else if(direction == 'r') //vai pra direita
+		else if(direction == 'D') //vai pra direita
 			dir_id = +1;
 		else
 			dir_id = 0;

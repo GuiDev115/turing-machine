@@ -8,7 +8,7 @@ int main(int argc, char const *argv[]){
 		return 1;
 	}
 	for (int i = 1; i < argc; ++i){
-		std::cout << argv[i] << ":\n";
+		cout << argv[i] << ":\n";
 		TuringMachine t(argv[i]);
 		t.parseFile();
 		t.makeTransitionTables();

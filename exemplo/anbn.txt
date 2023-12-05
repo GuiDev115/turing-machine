@@ -1,12 +1,12 @@
-BaaabbbbB
-q0 B B r q1
-q1 y y r q1
-q1 a x r q2
-q1 B B r q4
-q2 a a r q2
-q2 y y r q2
-q2 b y l q3
-q3 y y l q3
-q3 a a l q3
-q3 x x r q1
+BaaabbbB
+q0 B B E q1
+q1 y y D q1
+q1 a x D q2
+q1 B B D q4
+q2 a a D q2
+q2 y y D q2
+q2 b y E q3
+q3 y y E q3
+q3 a a E q3
+q3 x x D q1
 accept q4
