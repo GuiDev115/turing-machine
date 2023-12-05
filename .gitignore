@@ -1,0 +1,11 @@
+#ignora o main.o
+
+.main.o
+
+#ignora o tm
+
+.tm
+
+#ignora o turing_machine.o
+
+.turing_machine.o
