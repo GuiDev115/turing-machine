@@ -1,4 +1,4 @@
-BaaabbbB
+BaaabbbbB
 q0 B B r q1
 q1 y y r q1
 q1 a x r q2

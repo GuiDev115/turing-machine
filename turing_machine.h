@@ -6,11 +6,6 @@
 #include <string>
 #include <utility>
 #include <vector>
-#ifdef _WIN32
-#include <Windows.h>
-#else
-#include <unistd.h>
-#endif
 
 using namespace std;
 
@@ -19,19 +14,19 @@ typedef vector<vector<char>> vvc;
 
 class TuringMachine {
 	string file_name,
-				tape;		// input tape on which turing machine works
-	int num_states,	// number of states
-		num_alphs, 	// number of alphabets
-		ptr;		// location of pointer head of turing machine
-	map<string, int> state_id;		// maps each state to a unique key
-	map<char, int> alph_id;				// maps each alphabet to a unique key
+				tape;	// fita de entrada na qual a máquina de Turing trabalha
+	int num_states,		// number of states
+		num_alphs, 		// número de alfabetos
+		ptr;			// localização da cabeça do ponteiro da máquina de turing
+	map<string, int> state_id;		// associa cada estado a uma chave única
+	map<char, int> alph_id;				// associa cada alfabeto a uma chave única
 	vector<int> accept_state;
-	vector<vector<int>> state_table;	// transition table storing next state
-												// for a given (present state, input char) pair
-	vector<vector<int>> dir_table;	// transition table storing next direction
-												// for a given (state, char) pair
-	vector<vector<char>> write_table;	// transition table storing next write char
-												// for a given (state, char) pair
+	vector<vector<int>> state_table;	// tabela de transição que armazena o estado seguinte
+										// para um dado par (estado atual, carácter de entrada)
+	vector<vector<int>> dir_table;	// tabela de transição que armazena a direção seguinte
+									// para um determinado par (estado, carácter)
+	vector<vector<char>> write_table;	// tabela de transição que armazena o próximo carácter de escrita
+										// para um determinado par (estado, carácter)
 public:
 	TuringMachine(string _file_name):
 		file_name(_file_name),
@@ -41,7 +36,7 @@ public:
 
 	void displayTape();
 	int parseFile();
-	//void initializeTables();
+	//void initializeTables(); //nao precisa dessa poha
 	void makeTransitionTables();
 	void turingSimulator();
 };
