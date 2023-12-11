@@ -1,5 +1,5 @@
 BaaabbbB
-q0 B B E q1
+q0 B B D q1
 q1 y y D q1
 q1 a x D q2
 q1 B B D q4

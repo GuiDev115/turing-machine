@@ -34,7 +34,7 @@ public:
 		num_alphs(0),
 		ptr(0){};
 
-	void displayTape();
+	void displayTape(int present_state);
 	int parseFile();
 	//void initializeTables(); //nao precisa dessa poha
 	void makeTransitionTables();

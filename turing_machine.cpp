@@ -3,12 +3,18 @@
 
 using namespace std; 
 
-void TuringMachine::displayTape() {
-	cout << "\r" << tape.substr(0, ptr);	// apresentar o conteúdo da fita antes da cabeça do ponteiro
-	cout << "[" << tape[ptr] << "]";		// apresentar o conteúdo da fita sob a cabeça do ponteiro
+void TuringMachine::displayTape(int present_state) {
+	cout << tape.substr(0, ptr);	// apresentar o conteúdo da fita antes da cabeça do ponteiro
+	cout << "{q" << present_state << "}" << tape[ptr];		// apresentar o conteúdo da fita sob a cabeça do ponteiro
 	cout << tape.substr(ptr + 1) << endl;	// apresentar o conteúdo da fita sob a cabeça do ponteiro
 	cout << flush; // limpar o buffer de saída
 	usleep(100000);
+
+	ofstream ofs;
+	ofs.open("output.txt", ios::app);
+	ofs << tape.substr(0, ptr) 
+		<< "{q" << present_state << "}" << tape[ptr]
+		<< tape.substr(ptr + 1);	// apresentar o conteúdo da fita antes da cabeça do ponteiro
 
 }
 
@@ -93,8 +99,9 @@ void TuringMachine::makeTransitionTables(){ // preencher tabelas de transição
 
 void TuringMachine::turingSimulator(){ // simular a máquina de turing
 	int present_state_id = 0, read_char_id, dir_id = 0;
+	ofstream ofs;
 
-	displayTape(); // apresentar a fita
+	displayTape(present_state_id); // apresentar a fita
 	while(true){
 		read_char_id = alph_id.find(tape[ptr])->second;
 		dir_id = dir_table[present_state_id][read_char_id];
@@ -102,14 +109,22 @@ void TuringMachine::turingSimulator(){ // simular a máquina de turing
 		present_state_id = state_table[present_state_id][read_char_id];
 
 		if(present_state_id == -1){ // se não houver transição para o estado atual
-			if(accept_state.size() > 0) // se houver um estado de aceitação
-				cout << "\n> rejeitado krai"; 
-			else
+			if(accept_state.size() > 0) {// se houver um estado de aceitação
+				cout << "\n> rejeitado"; 
+					ofs.open("output.txt", ios::app);
+					ofs << "\n> rejeitado"; 
+			}
+			else{
 				cout << "\n> Interrompido"; 
+				ofs.open("output.txt", ios::app);
+				ofs << "\n> Interrompido"; 
+			}
 			break;
 		}
 		if(find(accept_state.begin(), accept_state.end(), present_state_id) 		// se o estado atual for um estado de aceitação
 			!= accept_state.end()){
+			ofs.open("output.txt", ios::app);
+			ofs << "\n> Aceito"; 
 			cout << "\n> Aceito";
 			break;
 		}
@@ -121,6 +136,6 @@ void TuringMachine::turingSimulator(){ // simular a máquina de turing
 		}
 		if(ptr >= tape.size())
 			tape = tape + "_";
-		displayTape(); // apresentar a fita
+		displayTape(present_state_id); // apresentar a fita
 	}
 }
