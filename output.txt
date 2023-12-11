@@ -164,4 +164,10 @@ Bxxxy{q1}yyB
 Bxxxyy{q1}yB
 Bxxxyyy{q1}B
 
-Aceito
+Aceito{q0}BaaabbbB
+{q1}qaaabbbB
+
+rejeitado{q0}BaaabbbB
+{q1}qaaabbbB
+
+rejeitado

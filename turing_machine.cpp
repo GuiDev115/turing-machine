@@ -34,7 +34,6 @@ int TuringMachine::parseFile() {
 
 	// ler a primeira linha
 	getline(ifs, tape); // ler a fita de entrada
-		cin.ignore();
 	while(getline(ifs, line)){ // ler cada linha
 		istringstream iss(line); // separar a linha em palavras
 		iss >> present_state; // ler o estado atual
