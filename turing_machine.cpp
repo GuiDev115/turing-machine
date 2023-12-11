@@ -14,11 +14,12 @@ void TuringMachine::displayTape(int present_state) {
 	ofs.open("output.txt", ios::app);
 	ofs << tape.substr(0, ptr) 
 		<< "{q" << present_state << "}" << tape[ptr]
-		<< tape.substr(ptr + 1);	// apresentar o conteúdo da fita antes da cabeça do ponteiro
+		<< tape.substr(ptr + 1) << endl;	// apresentar o conteúdo da fita antes da cabeça do ponteiro
 
 }
 
 int TuringMachine::parseFile() {
+
 
 	// // abrir entrada para leitura
 	ifstream ifs;
@@ -31,25 +32,28 @@ int TuringMachine::parseFile() {
 	string line, present_state, next_state;
 	char read_char, write_char, direction;
 
-	getline(ifs,tape);	// lendo entrada
-	while(getline(ifs, line)){
+	// ler a primeira linha
+	getline(ifs, tape); // ler a fita de entrada
+		cin.ignore();
+	while(getline(ifs, line)){ // ler cada linha
 		istringstream iss(line); // separar a linha em palavras
 		iss >> present_state; // ler o estado atual
-		//cout << present_state << endl; // apresentar o estado atual
 		if(present_state == "accept"){ // se o estado atual for um estado de aceitação
 			while(iss >> present_state) // ler todos os estados de aceitação
 				accept_state.push_back(state_id.find(present_state)->second); // inserir estado de aceitação na tabela de estados de aceitação
 			continue;
 		}
-		iss >> read_char >> write_char >> direction >> next_state; // ler o carácter de entrada, carácter de escrita, direção e estado seguinte
+		iss >> read_char >> next_state >> write_char >> direction;  // ler o carácter de entrada, carácter de escrita, direção e estado seguinte
 		if(state_id.insert(make_pair(present_state, num_states)).second) // inserir estado na tabela de estados
-			++num_states;
-		if(state_id.insert(make_pair(next_state, num_states)).second) // inserir estado na tabela de estados
 			++num_states;
 		if(alph_id.insert(make_pair(read_char, num_alphs)).second) // inserir alfabeto na tabela de alfabetos
 			++num_alphs;
 		if(alph_id.insert(make_pair(write_char, num_alphs)).second) // inserir alfabeto na tabela de alfabetos
 			++num_alphs; 
+		if(state_id.insert(make_pair(next_state, num_states)).second) // inserir estado na tabela de estados
+			++num_states;
+
+			cout << present_state << read_char << " " << write_char << " " << direction << " " << next_state << endl;
 	}
 	
 	// inicializando tabelas de transição
@@ -62,7 +66,7 @@ int TuringMachine::parseFile() {
 }
 
 void TuringMachine::makeTransitionTables(){ // preencher tabelas de transição
-	string line, present_state, next_state, tape;
+	string line, present_state, next_state;
 	char read_char, write_char, direction; 
 	int present_state_id, next_state_id, read_char_id, dir_id;
 
@@ -76,7 +80,7 @@ void TuringMachine::makeTransitionTables(){ // preencher tabelas de transição
 		if(present_state == "accept") // ignorar linha de aceitação
 			continue;
 
-		iss >> read_char >> write_char >> direction >> next_state;
+		iss >> read_char >> next_state >> write_char >> direction;
 
 		// encontrar as respectivas identificações únicas
 		present_state_id = state_id.find(present_state)->second; 
@@ -101,31 +105,33 @@ void TuringMachine::turingSimulator(){ // simular a máquina de turing
 	int present_state_id = 0, read_char_id, dir_id = 0;
 	ofstream ofs;
 
+	// ler entrada
+
 	displayTape(present_state_id); // apresentar a fita
 	while(true){
-		read_char_id = alph_id.find(tape[ptr])->second;
+		read_char_id = alph_id.find(tape[ptr])->second; //
 		dir_id = dir_table[present_state_id][read_char_id];
 		tape[ptr] = write_table[present_state_id][read_char_id];
 		present_state_id = state_table[present_state_id][read_char_id];
 
 		if(present_state_id == -1){ // se não houver transição para o estado atual
 			if(accept_state.size() > 0) {// se houver um estado de aceitação
-				cout << "\n> rejeitado"; 
+				cout << "\nrejeitado"; 
 					ofs.open("output.txt", ios::app);
-					ofs << "\n> rejeitado"; 
+					ofs << "\nrejeitado"; 
 			}
 			else{
-				cout << "\n> Interrompido"; 
+				cout << "\nInterrompido"; 
 				ofs.open("output.txt", ios::app);
-				ofs << "\n> Interrompido"; 
+				ofs << "\nInterrompido"; 
 			}
 			break;
 		}
 		if(find(accept_state.begin(), accept_state.end(), present_state_id) 		// se o estado atual for um estado de aceitação
 			!= accept_state.end()){
 			ofs.open("output.txt", ios::app);
-			ofs << "\n> Aceito"; 
-			cout << "\n> Aceito";
+			ofs << "\nAceito"; 
+			cout << "\nAceito";
 			break;
 		}
 

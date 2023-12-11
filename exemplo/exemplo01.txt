@@ -1,12 +1,12 @@
-aaabbb
-q0 b b r q1
-q1 y y r q1
-q1 a x r q2
-q1 b b r q4
-q2 a a r q2
-q2 y y r q2
-q2 b y l q3
-q3 y y l q3
-q3 a a l q3
-q3 x x r q1
-accept q4
+aaaaabbbbb
+q0 a x D q1
+q1 a a D q1
+q1 y y D q1
+q1 b y E q2
+q2 a a E q2
+q2 y y E q2
+q2 x x D q0
+q0 y y D q3
+q3 y y D q3
+q3 _ _ E q4
+accept q4 q3

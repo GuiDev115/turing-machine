@@ -4,7 +4,7 @@ using namespace std;
 
 int main(int argc, char const *argv[]){
 	if(argc == 1){
-		cerr << "Too few arguments\n";
+		cerr << "Error\n";
 		return 1;
 	}
 	for (int i = 1; i < argc; ++i){

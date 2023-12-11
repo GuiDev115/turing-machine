@@ -13,7 +13,7 @@ typedef vector<vector<int>> vvi;
 typedef vector<vector<char>> vvc;
 
 class TuringMachine {
-	string file_name,
+	string file_name,	// nome do arquivo de entrada
 				tape;	// fita de entrada na qual a máquina de Turing trabalha
 	int num_states,		// number of states
 		num_alphs, 		// número de alfabetos
