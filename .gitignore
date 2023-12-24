@@ -5,3 +5,7 @@
 #ignora o tm
 
 tm
+
+#ignora o .vscode
+/.vscode
+

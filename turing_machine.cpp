@@ -51,8 +51,6 @@ int TuringMachine::parseFile() {
 			++num_alphs; 
 		if(state_id.insert(make_pair(next_state, num_states)).second) // inserir estado na tabela de estados
 			++num_states;
-
-			cout << present_state << read_char << " " << write_char << " " << direction << " " << next_state << endl;
 	}
 	
 	// inicializando tabelas de transição
