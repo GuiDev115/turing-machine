@@ -37,4 +37,8 @@ q3 _ _ l q4
 accept q4 q3
 ```
 
+## Exemplo de saída para anbn (mesma quantidade de 'a' e 'b')
+
+![Alt text](img/image.png)
+
 ### 🔥 Fique a vontade para melhorar dando algum PR 🔥
