@@ -1,0 +1,5 @@
+BbaaaaaaaB
+q0 B q1 B D
+q1 a q2 a D
+q1 b q0 b E
+accept q2

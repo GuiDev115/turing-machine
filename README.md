@@ -1,6 +1,6 @@
 # Turing Machine
 
-Um simulador de Maquina de Turing Determinístico Reconhecedora de Linguagens.
+Um simulador de Maquina de Turing Determinístico Decidora de Linguagens.
 
 ## Instalar o Compilador do C++
 ```

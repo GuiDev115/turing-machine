@@ -1,0 +1,8 @@
+B000100100101000000B
+q0 B q1 B D
+q1 0 q1 0 D
+q1 1 q2 1 D
+q1 B q4 B D
+q2 0 q3 0 D
+q3 0 q1 0 D
+accept q4
