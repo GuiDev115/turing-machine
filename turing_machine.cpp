@@ -13,8 +13,7 @@ void TuringMachine::displayTape(int present_state) {
 	ofstream ofs;
 	ofs.open("output.txt", ios::app);
 	ofs << tape.substr(0, ptr) 
-		<< "{q" << present_state << "}" << tape[ptr]
-		<< tape.substr(ptr + 1) << endl;	// apresentar o conteúdo da fita antes da cabeça do ponteiro
+		<< "{q" << present_state << "}" << tape[ptr];
 
 }
 
