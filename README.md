@@ -41,4 +41,10 @@ accept q4 q3
 
 ![Alt text](img/image.png)
 
-### 🔥 Fique a vontade para melhorar dando algum PR 🔥
+## Contribuições
+
+Contribuições para este projeto são bem-vindas! Se você encontrar um bug ou tiver uma sugestão de recurso, sinta-se à vontade para abrir uma issue. Se você quiser contribuir com o código, sinta-se à vontade para abrir um Pull Request.
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
